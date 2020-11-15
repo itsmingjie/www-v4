@@ -6,7 +6,16 @@
 .markdown ul,
 .markdown ol,
 .markdown blockquote {
-  @apply my-6;
+  @apply my-6 text-xl leading-loose;
+}
+
+.markdown ul {
+  list-style-type: disc;
+}
+
+.markdown li {
+    margin: 0 0 0.2em 1.5em;
+    padding-left: 0.3em;
 }
 
 .markdown h2 {
@@ -15,4 +24,20 @@
 
 .markdown h3 {
   @apply text-2xl mt-8 mb-4 leading-snug;
+}
+
+.markdown a {
+  color: var(--alt-color);
+  border-bottom: 2px dotted var(--alt-color);
+  text-decoration: none;
+}
+
+.markdown a:hover {
+  border-bottom: 2px solid var(--alt-color);
+}
+
+.markdown credit {
+  color: var(--hint-color);
+  font-size: medium;
+  font-style: italic;
 }

@@ -8,6 +8,8 @@ module.exports = {
         'accent-7': '#333',
         success: '#0070f3',
         cyan: '#79FFE1',
+        grey: '#8a8e99',
+        black: '#444444'
       },
       spacing: {
         28: '7rem',
@@ -17,6 +19,10 @@ module.exports = {
       },
       lineHeight: {
         tight: 1.2,
+      },
+      fontFamily: {
+        'display': ['Wremena', 'sans-serif'],
+        'body': ['Charter',  'sans-serif']
       },
       fontSize: {
         '5xl': '2.5rem',
@@ -28,6 +34,9 @@ module.exports = {
         small: '0 5px 10px rgba(0, 0, 0, 0.12)',
         medium: '0 8px 30px rgba(0, 0, 0, 0.12)',
       },
+      textColor: {
+        'primary': "#444"
+      }
     },
   },
 }

@@ -2,6 +2,31 @@
 
 /* Write your own custom base styles here */
 
+:root {
+  --link-color: rgba(52, 52, 52, 1);
+  --text-color: rgba(68, 68, 68, 1);
+  --alt-color: rgba(41, 116, 255, 1);
+  --overlay-color: rgba(255, 255, 255, 0.85);
+  --hint-color: #8a8e99;
+  --background-color: #fff;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --block-background-color: rgba(0, 0, 0, 0.05);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-mode: "dark";
+    --link-color: rgba(255, 255, 255, 0.9);
+    --text-color: rgba(255, 255, 255, 1);
+    --alt-color: rgba(113, 157, 240, 1);
+    --overlay-color: rgba(0, 0, 0, 0.85);
+    --hint-color: #8492a6;
+    --background-color: #121217;
+    --shadow-color: rgba(255, 255, 255, 0.1);
+    --block-background-color: rgba(255, 255, 255, 0.05);
+  }
+}
+
 /* Start purging... */
 @tailwind components;
 /* Stop purging. */
@@ -13,3 +38,4 @@
 /* Stop purging. */
 
 /* Your own custom utilities */
+@import "./fonts.css";

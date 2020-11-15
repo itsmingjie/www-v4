@@ -1,58 +1,58 @@
-import Container from '../components/container'
-import MoreStories from '../components/more-stories'
-import HeroPost from '../components/hero-post'
-import Intro from '../components/intro'
-import Layout from '../components/layout'
-import { getAllPosts } from '../lib/api'
-import Head from 'next/head'
-import { CMS_NAME } from '../lib/constants'
-import Post from '../types/post'
+import Container from "../components/container";
+import Header from "../components/header";
+import Layout from "../components/layout";
+import Head from "next/head";
+import { CMS_NAME } from "../lib/constants";
+import Post from "../types/post";
+import HomeBody from "../components/home-body";
+import PostHeader from "../components/post-header";
+import markdownToHtml from "../lib/markdownToHtml";
+import { getPostBySlug } from "../lib/api";
+import PostType from "../types/post";
 
-type Props = {
-  allPosts: Post[]
-}
+type Props = { post: PostType };
 
-const Index = ({ allPosts }: Props) => {
-  const heroPost = allPosts[0]
-  const morePosts = allPosts.slice(1)
+const Index = ({ post }: Props) => {
   return (
     <>
       <Layout>
         <Head>
-          <title>Next.js Blog Example with {CMS_NAME}</title>
+          <title>Mingjie Jiang | @itsmingjie</title>
         </Head>
         <Container>
-          <Intro />
-          {heroPost && (
-            <HeroPost
-              title={heroPost.title}
-              coverImage={heroPost.coverImage}
-              date={heroPost.date}
-              author={heroPost.author}
-              slug={heroPost.slug}
-              excerpt={heroPost.excerpt}
-            />
-          )}
-          {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+          <div className="max-w-3xl mx-auto">
+            <Header />
+            <h2 className="font-display text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight mb-5">
+              {post.title}
+            </h2>
+            <HomeBody content={post.content} />
+          </div>
         </Container>
       </Layout>
     </>
-  )
-}
+  );
+};
 
-export default Index
+export default Index;
 
 export const getStaticProps = async () => {
-  const allPosts = getAllPosts([
-    'title',
-    'date',
-    'slug',
-    'author',
-    'coverImage',
-    'excerpt',
-  ])
+  const post = getPostBySlug("index", [
+    "title",
+    "date",
+    "slug",
+    "author",
+    "content",
+    "ogImage",
+    "coverImage",
+  ]);
+  const content = await markdownToHtml(post.content || "");
 
   return {
-    props: { allPosts },
-  }
-}
+    props: {
+      post: {
+        ...post,
+        content,
+      },
+    },
+  };
+};
