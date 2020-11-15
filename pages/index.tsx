@@ -2,10 +2,7 @@ import Container from "../components/container";
 import Header from "../components/header";
 import Layout from "../components/layout";
 import Head from "next/head";
-import { CMS_NAME } from "../lib/constants";
-import Post from "../types/post";
 import HomeBody from "../components/home-body";
-import PostHeader from "../components/post-header";
 import markdownToHtml from "../lib/markdownToHtml";
 import { getPostBySlug } from "../lib/api";
 import PostType from "../types/post";
@@ -40,7 +37,6 @@ export const getStaticProps = async () => {
     "title",
     "date",
     "slug",
-    "author",
     "content",
     "ogImage",
     "coverImage",
